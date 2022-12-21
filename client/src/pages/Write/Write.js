@@ -1,0 +1,89 @@
+import React from "react";
+import "./Write.css";
+import { userContext } from "../../Context/Context";
+export default function Write() {
+  const { user } = React.useContext(userContext);
+  const [title, setTitle] = React.useState("");
+  const [desc, setDesc] = React.useState("");
+  const [file, setFile] = React.useState("");
+  const handleSubmit = async event => {
+    try {
+      event.preventDefault();
+      let fileName = "";
+      const data = new FormData();
+
+      if (file) {
+        fileName = Date.now() + file.name;
+        data.append("name", fileName);
+        data.append("file", file);
+      }
+      await fetch("/api/upload", {
+        method: "POST",
+        body: data
+      });
+      // headers: {
+      //   "Content-Type": "multipart/form-data"
+      // },
+      // const result = await response.json();
+      // console.log(result);
+      const postData = {
+        title: title,
+        description: desc,
+        photo: fileName,
+        username: user.username,
+        categories: ""
+      };
+      const res = await fetch("/api/posts/", {
+        method: "POST",
+        body: JSON.stringify(postData),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      });
+      const newPostResponse = await res.json();
+      window.location.replace("/post/" + newPostResponse._id);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  return (
+    <div className="write">
+      {file && (
+        <img className="writeImg" src={URL.createObjectURL(file)} alt="" />
+      )}
+
+      <form className="writeForm" onSubmit={handleSubmit}>
+        <div className="writeFormGroup">
+          <label htmlFor="fileInput">
+            <i className="writeIcon fa-solid fa-plus"></i>
+          </label>
+          <input
+            type="file"
+            id="fileInput"
+            style={{ display: "none" }}
+            onChange={event => setFile(event.target.files[0])}
+          />
+          <input
+            type="text"
+            placeholder="title"
+            className="writeInput"
+            autoFocus="true"
+            onChange={event => setTitle(event.target.value)}
+          />
+        </div>
+
+        <div className="writeFormGroup">
+          <textarea
+            placeholder="Tell Your Story..."
+            type="text"
+            className="writeInput writeText"
+            onChange={event => setDesc(event.target.value)}
+          ></textarea>
+        </div>
+        <button className="writeSubmit" type="submit">
+          Publish
+        </button>
+      </form>
+    </div>
+  );
+}

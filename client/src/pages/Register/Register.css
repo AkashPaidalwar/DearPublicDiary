@@ -1,0 +1,66 @@
+.register {
+  height: calc(100vh - 50px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.5),
+      rgba(255, 255, 255, 0.5)
+    ),
+    url("https://api.time.com/wp-content/uploads/2018/09/single-woman-benefits.jpg?quality=85&w=1200&h=628&crop=1");
+  background-size: cover;
+}
+.registerTitle {
+  font-size: 50px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.registerForm {
+  margin-top: 20px;
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.registerForm.registerFormLabel {
+  margin: 50px 0;
+}
+
+.registerInput {
+  padding: 10px;
+  background-color: white;
+  border: none;
+}
+
+.registerButton {
+  margin-top: 20px;
+  padding: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  background-color: teal;
+  border: none;
+  color: white;
+  border-radius: 10px;
+}
+.registerLoginButton {
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  background-color: lightcoral;
+  cursor: pointer;
+  border: none;
+  padding: 15px;
+  color: white;
+  border-radius: 10px;
+  font-size: 16px;
+}
+.somethingwentwrong {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: red;
+  margin-top: 15px;
+}
