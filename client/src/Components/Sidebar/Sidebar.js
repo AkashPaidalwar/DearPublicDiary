@@ -4,19 +4,7 @@ import { Link } from "react-router-dom";
 export default function Sidebar() {
   const [cats, setCats] = React.useState([]);
 
-  useEffect(() => {
-    const getCats = async () => {
-      try {
-        const res = await fetch("/api/category");
-        const data = await res.json();
-        setCats(data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    getCats();
-  }, []);
-  return (
+   return (
     <div className="sidebar">
       <div className="sidebarItem">
         <div className="titleContainer">
@@ -26,11 +14,10 @@ export default function Sidebar() {
         </div>
         <span className="sidebarTitle">CATEGORIES</span>
         <ul className="sidebarList">
-          {cats.map((cat, index) => (
-            <Link to={`/?cat=${cat.name}`} className="link" key={index}>
-              <li className="sidebarListItem">{cat.name}</li>
-            </Link>
-          ))}
+              <li className="sidebarListItem">Fun</li>
+              <li className="sidebarListItem">Entertainment</li>
+              <li className="sidebarListItem">Movies</li>
+              <li className="sidebarListItem">Life</li>
         </ul>
       </div>
       <div className="sidebarItem">
