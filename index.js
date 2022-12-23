@@ -6,6 +6,8 @@ const postRoute = require("./routes/posts");
 const categoryRoute = require("./routes/categories");
 const multer = require("multer");
 const path = require("path");
+const cors = require("cors");
+
 
 
 mongoose
@@ -28,6 +30,8 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 const app = express();
+app.use(cors());
+
 app.use(express.json());
 app.use("/images", express.static(path.join(__dirname, "/images")));
 
