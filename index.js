@@ -54,5 +54,5 @@ app.get("*", function (_, res) {
 });
 
 app.listen(process.env.PORT || 5000, () => {
-  console.log("backend is running");
+  console.log("backend is running on: "+process.env.PORT );
 });
