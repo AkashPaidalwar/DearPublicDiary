@@ -5,18 +5,16 @@ import "./SinglePost.css";
 export default function SinglePost() {
   const location = useLocation();
   const path = location.pathname.split("/")[2];
-  console.log("path "+path)
-
   const [post, setPost] = useState({});
   const { user } = useContext(userContext);
-  const publicFolder = "/images/"
+  const publicFolder = "/images/";
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [updateMode, setUpdateMode] = useState(false);
 
   const handleDelete = async () => {
     try {
-      await fetch(`/api/posts/${path}`, {
+      await fetch(`api/posts/${path}`, {
         method: "DELETE",
         body: JSON.stringify({
           username: user.username
@@ -32,8 +30,10 @@ export default function SinglePost() {
   useEffect(() => {
     const getPost = async () => {
       try {
+        console.log("path " + path);
         const res = await fetch(`/api/posts/${path}`);
         const data = await res.json();
+        console.log(data);
         setPost(data);
         setTitle(data.title);
         setDesc(data.description);
@@ -46,7 +46,7 @@ export default function SinglePost() {
 
   const handleUpdate = async () => {
     try {
-      await fetch(`/api/posts/${path}`, {
+      await fetch(`api/posts/${path}`, {
         method: "PUT",
         body: JSON.stringify({
           username: user.username,
@@ -57,7 +57,7 @@ export default function SinglePost() {
       });
       window.location.reload();
     } catch (err) {
-      console.log(err);
+      console.log("Akash" + err);
     }
   };
   return (

@@ -1,10 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./Sidebar.css";
-import { Link } from "react-router-dom";
 export default function Sidebar() {
-  const [cats, setCats] = React.useState([]);
-
-   return (
+  return (
     <div className="sidebar">
       <div className="sidebarItem">
         <div className="titleContainer">
@@ -14,10 +11,10 @@ export default function Sidebar() {
         </div>
         <span className="sidebarTitle">CATEGORIES</span>
         <ul className="sidebarList">
-              <li className="sidebarListItem">Fun</li>
-              <li className="sidebarListItem">Entertainment</li>
-              <li className="sidebarListItem">Movies</li>
-              <li className="sidebarListItem">Life</li>
+          <li className="sidebarListItem">Life</li>
+          <li className="sidebarListItem">Fun</li>
+          <li className="sidebarListItem">Games</li>
+          <li className="sidebarListItem">Love</li>
         </ul>
       </div>
       <div className="sidebarItem">

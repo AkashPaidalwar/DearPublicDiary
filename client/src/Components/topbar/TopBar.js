@@ -5,7 +5,7 @@ import { userContext } from "../../Context/Context";
 
 export default function TopBar() {
   const { user, setUser } = React.useContext(userContext);
-  const publicFolder = "images/";
+  const publicFolder = "http://localhost:5000/images/";
 
   const handleLogout = () => {
     setUser(null);

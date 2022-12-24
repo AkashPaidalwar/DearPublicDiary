@@ -23,7 +23,7 @@ export default function Settings() {
         data.append("name", fileName);
         data.append("file", file);
       }
-      await fetch("/api/upload", {
+      await fetch("/upload", {
         method: "POST",
         body: data
       });
@@ -35,7 +35,7 @@ export default function Settings() {
         password,
         profilePic: profileImageName
       };
-      const res = await fetch("/api/user/" + user._id, {
+      const res = await fetch("api/user/" + user._id, {
         method: "PUT",
         body: JSON.stringify(updatedUser),
         headers: {

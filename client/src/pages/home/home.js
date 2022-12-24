@@ -7,12 +7,15 @@ import "./home.css";
 
 export default function Home() {
   const [posts, setPosts] = React.useState([]);
+  // const API_Base = "http://localhost:5000/api/";
   const location = useLocation();
   const search = location.search;
+  console.log("location", location);
 
   React.useEffect(() => {
     const fetchPosts = async () => {
       try {
+        console.log("search" + search);
         const res = await fetch("/api/posts" + search);
         const data = await res.json();
         setPosts(data);

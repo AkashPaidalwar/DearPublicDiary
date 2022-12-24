@@ -17,7 +17,7 @@ export default function Write() {
         data.append("name", fileName);
         data.append("file", file);
       }
-      await fetch("/api/upload", {
+      await fetch("api/upload", {
         method: "POST",
         body: data
       });
@@ -33,7 +33,7 @@ export default function Write() {
         username: user.username,
         categories: ""
       };
-      const res = await fetch("/api/posts/", {
+      const res = await fetch("api/posts/", {
         method: "POST",
         body: JSON.stringify(postData),
         headers: {
