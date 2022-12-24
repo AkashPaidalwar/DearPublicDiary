@@ -30,6 +30,7 @@ export default function SinglePost() {
   useEffect(() => {
     const getPost = async () => {
       try {
+        console.log("path "+path)
         const res = await fetch(`/api/posts/${path}`);
         const data = await res.json();
         setPost(data);
