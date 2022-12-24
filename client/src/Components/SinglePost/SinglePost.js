@@ -5,6 +5,8 @@ import "./SinglePost.css";
 export default function SinglePost() {
   const location = useLocation();
   const path = location.pathname.split("/")[2];
+  console.log("path "+path)
+
   const [post, setPost] = useState({});
   const { user } = useContext(userContext);
   const publicFolder = "/images/"
@@ -30,7 +32,6 @@ export default function SinglePost() {
   useEffect(() => {
     const getPost = async () => {
       try {
-        console.log("path "+path)
         const res = await fetch(`/api/posts/${path}`);
         const data = await res.json();
         setPost(data);
