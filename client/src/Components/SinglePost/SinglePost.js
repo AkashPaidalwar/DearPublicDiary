@@ -35,11 +35,11 @@ export default function SinglePost() {
         setPost(data);
         setTitle(data.title);
         setDesc(data.description);
-        getPost();
       } catch (err) {
         console.log(err);
       }
     };
+    getPost();
   }, [path]);
 
   const handleUpdate = async () => {
