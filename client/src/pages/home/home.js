@@ -7,7 +7,6 @@ import "./home.css";
 
 export default function Home() {
   const [posts, setPosts] = React.useState([]);
-  // const API_Base = "http://localhost:5000/api/";
   const location = useLocation();
   const search = location.search;
 

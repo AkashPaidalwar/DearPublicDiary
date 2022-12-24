@@ -2,7 +2,7 @@ import React from "react";
 import "./Post.css";
 import { Link } from "react-router-dom";
 export default function Post({ post }) {
-  const publicFolder = "images/";
+  const publicFolder = "/images/";
   return (
     <div className="post">
       {post.photo && (
