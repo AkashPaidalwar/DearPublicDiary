@@ -7,7 +7,6 @@ const postRoute = require("./routes/posts");
 const categoryRoute = require("./routes/categories");
 const multer = require("multer");
 const path = require("path");
-const expressUploader = require("express-fileupload");
 const fetch = require("node-fetch");
 
 dotenv.config();
@@ -38,7 +37,6 @@ app.use(express.json());
 // app.post("/api/upload", upload.single("file"), (req, res) => {
 //   res.status(200).json("File has been uploaded");
 // });
-app.use(expressUploader());
 app.post("/api/upload", async (req, res) => {
 
   try {
