@@ -40,7 +40,6 @@ app.use(express.json());
 app.post("/api/upload", async (req, res) => {
 
   try {
-    console.log("This is new line");
     let response = await fetch(
       `https://www.filestackapi.com/api/store/S3?key=${process.env.FILESTACK_API_KEY}&filename=${req.body.name}`,
       {
