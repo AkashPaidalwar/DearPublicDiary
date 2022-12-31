@@ -7,7 +7,6 @@ export default function SinglePost() {
   const path = location.pathname.split("/")[2];
   const [post, setPost] = useState({});
   const { user } = useContext(userContext);
-  const publicFolder = "/images/";
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [updateMode, setUpdateMode] = useState(false);
@@ -30,11 +29,11 @@ export default function SinglePost() {
   useEffect(() => {
     const getPost = async () => {
       try {
-        console.log("path " + path);
         const res = await fetch(`/api/posts/${path}`);
         const data = await res.json();
         console.log(data);
         setPost(data);
+
         setTitle(data.title);
         setDesc(data.description);
       } catch (err) {
@@ -64,11 +63,7 @@ export default function SinglePost() {
     <div className="singlePost">
       <div className="singlePostWrapper">
         {post.photo && (
-          <img
-            src={publicFolder + post.photo}
-            alt=""
-            className="singlePostImg"
-          />
+          <img src={post.photoURL} alt="" className="singlePostImg" />
         )}
         {updateMode ? (
           <input

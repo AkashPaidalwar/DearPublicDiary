@@ -22,6 +22,9 @@ const postSchema = new mongoose.Schema(
       type: Array,
       required: false,
     },
+    photoURL: {
+      type: String,
+    },
   },
   { timestamps: true }
 );

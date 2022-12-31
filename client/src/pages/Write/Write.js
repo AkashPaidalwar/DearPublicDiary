@@ -6,6 +6,7 @@ export default function Write() {
   const [title, setTitle] = React.useState("");
   const [desc, setDesc] = React.useState("");
   const [file, setFile] = React.useState("");
+
   const handleSubmit = async event => {
     try {
       event.preventDefault();
@@ -17,21 +18,19 @@ export default function Write() {
         data.append("name", fileName);
         data.append("file", file);
       }
-      await fetch("api/upload", {
+
+      const filestack_res = await fetch("api/upload", {
         method: "POST",
         body: data
       });
-      // headers: {
-      //   "Content-Type": "multipart/form-data"
-      // },
-      // const result = await response.json();
-      // console.log(result);
+      const filestack_data = await filestack_res.json();
       const postData = {
         title: title,
         description: desc,
         photo: fileName,
         username: user.username,
-        categories: ""
+        categories: "",
+        photoURL: filestack_data.url
       };
       const res = await fetch("api/posts/", {
         method: "POST",

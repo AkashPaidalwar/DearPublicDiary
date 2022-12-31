@@ -5,7 +5,6 @@ import { userContext } from "../../Context/Context";
 
 export default function TopBar() {
   const { user, setUser } = React.useContext(userContext);
-  const publicFolder = "/images/";
 
   const handleLogout = () => {
     setUser(null);
@@ -48,11 +47,7 @@ export default function TopBar() {
       <div className="topRight">
         {user ? (
           <Link to="/settings">
-            <img
-              src={publicFolder + user.profilePic}
-              alt=""
-              className="topImage"
-            ></img>
+            <img src={user.profilePic} alt="" className="topImage"></img>
           </Link>
         ) : (
           <ul className="topList">

@@ -9,7 +9,6 @@ export default function Settings() {
   const [email, setEmail] = React.useState(user.email);
   const [password, setPassword] = React.useState(user.password);
   const [success, setSuccess] = React.useState(false);
-  const publicFolder = "http://localhost:5000/images/";
 
   //////////////////////////////
   const handleSubmit = async event => {
@@ -23,17 +22,18 @@ export default function Settings() {
         data.append("name", fileName);
         data.append("file", file);
       }
-      await fetch("/upload", {
+      const filestack_res = await fetch("/api/upload", {
         method: "POST",
         body: data
       });
-      const profileImageName = file ? fileName : user.profilePic;
+      const filestack_data = await filestack_res.json();
+
       const updatedUser = {
         userID: user._id,
         username,
         email,
         password,
-        profilePic: profileImageName
+        profilePic: filestack_data.url
       };
       const res = await fetch("api/user/" + user._id, {
         method: "PUT",
@@ -63,11 +63,7 @@ export default function Settings() {
           <label>Profile Picture</label>
           <div className="settingsProfilePicture">
             <img
-              src={
-                file
-                  ? URL.createObjectURL(file)
-                  : publicFolder + user.profilePic
-              }
+              src={file ? URL.createObjectURL(file) : user.profilePic}
               alt=""
             />
             <label htmlFor="fileInput">
