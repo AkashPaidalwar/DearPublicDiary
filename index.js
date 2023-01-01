@@ -43,7 +43,7 @@ app.post("/api/upload", async (req, res) => {
     console.log("this line in api/upload ic called")
     console.log(process.env.FILESTACK_API_KEY)
     let response = await fetch(
-      `https://www.filestackapi.com/api/store/S3?key=AUvPiLE8TkaaaCDM2hZRQz&filename=${req.body.name}?policy=POLICY&signature=3YX53BZOVVB75LZFJ4CGNQP2MY`,
+      `https://www.filestackapi.com/api/store/S3?key=AUvPiLE8TkaaaCDM2hZRQz&filename=${req.body.name}`,
       {
         headers: { "Content-Type": "image/jpeg",
         Authorization:"Basic AUvPiLE8TkaaaCDM2hZRQz"
