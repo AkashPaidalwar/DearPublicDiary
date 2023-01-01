@@ -46,7 +46,6 @@ app.post("/api/upload", async (req, res) => {
       `https://www.filestackapi.com/api/store/S3?key=AUvPiLE8TkaaaCDM2hZRQz&filename=${req.body.name}`,
       {
         headers: { "Content-Type": "image/jpeg",
-        Authorization:"Basic AUvPiLE8TkaaaCDM2hZRQz"
       },
         method: "POST",
         body: req.files.file.data,

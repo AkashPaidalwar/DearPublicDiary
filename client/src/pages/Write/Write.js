@@ -34,10 +34,8 @@ export default function Write() {
       };
       const res = await fetch("api/posts/", {
         method: "POST",
-        body: JSON.stringify(postData),
-        headers: {
-          "Content-Type": "application/json"
-        }
+        body: JSON.stringify(postData)
+        
       });
       const newPostResponse = await res.json();
       window.location.replace("/post/" + newPostResponse._id);
