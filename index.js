@@ -41,7 +41,7 @@ app.post("/api/upload", async (req, res) => {
 
   try {
     console.log("this line in api/upload ic called")
-    console.log(process.env.FILESTACK_API_KEY)
+    console.log(req.files.file)
     let response = await fetch(
       `https://www.filestackapi.com/api/store/S3?key=AUvPiLE8TkaaaCDM2hZRQz&filename=${req.body.name}`,
       {
