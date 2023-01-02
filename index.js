@@ -41,14 +41,14 @@ app.post("/api/upload", async (req, res) => {
 
   try {
     console.log("this line in api/upload ic called")
-    console.log(req.file)
+    console.log(req.files)
     let response = await fetch(
       `https://www.filestackapi.com/api/store/S3?key=AUvPiLE8TkaaaCDM2hZRQz&filename=${req.body.name}`,
       {
         headers: { "Content-Type": "image/jpeg",
       },
         method: "POST",
-        body: req.file
+        body: req.files
         //body: req.files.file.data,
         //body: req.files.postImage.data,
       }
