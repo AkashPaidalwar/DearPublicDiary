@@ -45,8 +45,7 @@ app.post("/api/upload", async (req, res) => {
     let response = await fetch(
       `https://www.filestackapi.com/api/store/S3?key=AUvPiLE8TkaaaCDM2hZRQz&filename=${req.body.name}`,
       {
-        headers: { "Content-Type": "image/jpeg",
-      },
+        headers: { "Content-Type": "image/jpeg"},
         method: "POST",
         //body: req.files
         body: req.files.file.data,

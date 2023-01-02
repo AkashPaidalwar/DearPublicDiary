@@ -23,9 +23,7 @@ export default function Write() {
       const filestack_res = await fetch("api/upload", {
         method: "POST",
         body: data,
-        headers: {
-          'Content-Type': 'multipart/form-data; ',
-        },
+        headers: {'Content-Type': 'multipart/form-data'},
       });
       const filestack_data = await filestack_res.json();
       const postData = {
