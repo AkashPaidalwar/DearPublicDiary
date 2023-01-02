@@ -1,6 +1,7 @@
 import React from "react";
 import "./Write.css";
 import { userContext } from "../../Context/Context";
+import DocumentPicker from 'react-native-document-picker';
 export default function Write() {
   const { user } = React.useContext(userContext);
   const [title, setTitle] = React.useState("");
@@ -8,8 +9,15 @@ export default function Write() {
   const [file, setFile] = React.useState("");
 
   const handleSubmit = async event => {
+    event.preventDefault();
+
     try {
-      event.preventDefault();
+      const picker_res = await DocumentPicker.pick({
+        type: [DocumentPicker.types.images],
+      });
+      console.log('res : ' + JSON.stringify(picker_res));
+      setFile(res);
+
       let fileName = "";
       const data = new FormData();
 
