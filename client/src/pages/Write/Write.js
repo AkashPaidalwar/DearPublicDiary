@@ -18,7 +18,8 @@ export default function Write() {
         data.append("name", fileName);
         data.append("file", file);
       }
-
+    console.log("data")
+    console.log(data)
       const filestack_res = await fetch("api/upload", {
         method: "POST",
         body: data
